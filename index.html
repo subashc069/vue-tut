@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>This is the begining of an end</h1>
+    <div id="root">
+        <input type="text" v-model="message">
+        <p>This is the message: {{ message }}</p>
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#root',
+            data: {
+                message : 'This is home',
+                names :['Ram', 'Hari', 'Sita']
+            }
+        })
+    </script>
+</body>
+</html>
