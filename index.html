@@ -11,21 +11,31 @@
     <div id="root">
         <input type="text" v-model="message">
         <p>This is the message: {{ message }}</p>
+        
         <ul>
             <li v-for="name in names" v-text="name"></li>
         </ul>
+
+
+        <input id="input" type="text">
+        <button id="button">Add more</button>
     </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        var app = new Vue({
+        let app = new Vue({
             el: '#root',
             data: {
                 message : 'This is home',
                 names :['Ram', 'Hari', 'Sita']
             }
-        })
+        });
+
+        document.querySelector('#button').addEventListener('click', () => {
+            let name = document.querySelector('#input').value;
+            app.names.push(name);
+        });
     </script>
 </body>
 </html>
