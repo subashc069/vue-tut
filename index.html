@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .color-red {
+            color:red;
+        }
+        
+        .color-blue {
+            color:blue;
+        }
+
+        .isDisabled {
+            color: brown;
+        }
+    </style>
 </head>
 <body>
     
-    <h1>This is the begining of an end</h1>
+    
     <div id="root">
+        <h1 :class="className">This is the begining of an end</h1>
         <input type="text" v-model="message">
         <p>This is the message: {{ message }}</p>
         
@@ -16,9 +30,10 @@
             <li v-for="name in names" v-text="name"></li>
         </ul>
 
-
         <input id="input" type="text" v-model="newName">
         <button v-on:click="addName">Add more</button>
+        <button :title="title">Button 2</button><hr>
+        <button :class="{ 'isDisabled': isDisabled }" @click="toggleClass">Disable me</button>
     </div>
 
     <!-- Scripts -->
@@ -28,15 +43,22 @@
             el: '#root',
 
             data: {
-                newName:'',
+                newName: '',
                 message : 'This is home',
-                names :['Ram', 'Hari', 'Sita']
+                names : ['Ram', 'Hari', 'Sita'],
+                title: 'This is Dynamic title',
+                className: 'color-red',
+                isDisabled: false,
             },
 
             methods: {
                 addName() {
                     this.names.push(this.newName);
                     this.newName = '';
+                },
+
+                toggleClass() {
+                    this.isDisabled = true;
                 }
             },    
 
