@@ -19,96 +19,15 @@
     </style>
 </head>
 <body>
-    
-    
+
     <div id="root">
-        <h1 :class="className">This is the begining of an end</h1>
-        <input type="text" v-model="message">
-        <p>This is the message: {{ message }}</p>
-        
-        <ul>
-            <li v-for="name in names" v-text="name"></li>
-        </ul>
-
-        <input id="input" type="text" v-model="newName">
-        <button v-on:click="addName">Add more</button>
-        <button :title="title">Button 2</button>
-        <hr>
-
-        <button :class="{ 'isBrown': isBrown }" @click="toggleClass">Change me</button>
-        <hr>
-
-        <h2>Need For Computed Properties</h2>
-        <h3>Example on the documentation</h3>
-        <h3>{{ reversedMessage }}</h3>
-        <h3>Useful Example</h3>
-        <h3>All Tasks</h1>
-            <ul>
-                <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
-            </ul>
-        <h3>Incomplete Tasks</h3>
-            <ul>
-                <li v-for="task in incompleteTasks" v-text="task.description"></li>
-            </ul>
+      <task-list>this is the end</task-list>
     </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-        let app = new Vue({
-            el: '#root',
+    
+    <script src="main.js"></script>
 
-            data: {
-                newName: '',
-                message : 'This is home',
-                names : ['Ram', 'Hari', 'Sita'],
-                title: 'This is Dynamic title',
-                className: 'color-red',
-                isBrown: false,
-                tasks: [
-                    { description:'Go to the store', completed: true},
-                    { description:'Fetch some Water', completed: true},
-                    { description:'Collect some food', completed: false},
-                    { description:'Get some gas', completed: false},
-                    { description:'Get some supplies', completed: false},
-                ]
-            },
-
-            computed: {
-                reversedMessage() {
-                    return this.message.split('').reverse().join('');
-                },
-
-                incompleteTasks() {
-                    return this.tasks.filter(task => !task.completed)
-                }
-            },
-
-            methods: {
-                addName() {
-                    this.names.push(this.newName);
-                    this.newName = '';
-                },
-
-                toggleClass() {
-                    this.isBrown = true;
-                },
-
-            },    
-
-            // mounted() {
-            //     alert('ready')
-            //     document.querySelector('#button').addEventListener('click', () => {
-
-            //     let name = document.querySelector('#input');
-            //     app.names.push(name.value);
-
-            //     name.value = '';
-            //     });
-            // }
-        });
-
-       
-    </script>
 </body>
 </html>
